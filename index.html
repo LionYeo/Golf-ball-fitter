@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitMyBall — Golf Ball Fitting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- Nav -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="17" cy="17" r="15" fill="url(#navBallGrad)"/>
+                        <g fill="rgba(255,255,255,0.28)">
+                            <circle cx="10" cy="10" r="1.5"/><circle cx="17" cy="8" r="1.5"/><circle cx="24" cy="10" r="1.5"/>
+                            <circle cx="7"  cy="17" r="1.5"/><circle cx="27" cy="17" r="1.5"/>
+                            <circle cx="10" cy="24" r="1.5"/><circle cx="17" cy="26" r="1.5"/><circle cx="24" cy="24" r="1.5"/>
+                        </g>
+                        <ellipse cx="17" cy="17" rx="15" ry="4.5" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.2"/>
+                        <defs>
+                            <radialGradient id="navBallGrad" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#22C55E"/>
+                                <stop offset="100%" stop-color="#166534"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div>
+                    <span class="brand-name">FitMyBall</span>
+                    <span class="brand-sub">Golf Ball Fitting</span>
+                </div>
+            </div>
+            <div class="nav-meta">
+                <span class="nav-stat">93 balls · 20 brands</span>
+                <button id="reset-btn" class="reset-btn">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>
+                    </svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                Data-Driven Fitting
+            </div>
+            <h1 class="hero-title">Find Your Perfect <span class="hero-accent">Golf Ball</span></h1>
+            <p class="hero-sub">Answer a few questions — get a personalised match from 93 balls across 20 top brands.</p>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main class="main-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+
+                <form id="selector-form" novalidate>
+
+                    <!-- Current Stats -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </div>
+                            Your Stats
+                        </div>
+
+                        <div class="field-group">
+                            <div class="field">
+                                <label for="current-ball" class="field-label">
+                                    Current Ball
+                                    <span class="field-optional">optional</span>
+                                </label>
+                                <div class="select-wrapper">
+                                    <select id="current-ball">
+                                        <option value="">Not sure / Don't have one</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="average-score" class="field-label">Average Score</label>
+                                <div class="select-wrapper">
+                                    <select id="average-score">
+                                        <option value="">Select score...</option>
+                                        <option value="100+">100+ · Beginner</option>
+                                        <option value="90-99">90–99 · Bogey Golfer</option>
+                                        <option value="80-89">80–89 · Mid Handicap</option>
+                                        <option value="<80">&lt;80 · Low Handicap</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="driver-distance" class="field-label">
+                                    Driver Distance <span class="field-required">*</span>
+                                </label>
+                                <div class="select-wrapper">
+                                    <select id="driver-distance">
+                                        <option value="">Select distance...</option>
+                                        <option value="<200">Under 180 m</option>
+                                        <option value="200-240">180 – 220 m</option>
+                                        <option value="240-275">220 – 250 m</option>
+                                        <option value="275+">250+ m</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                                <p id="driver-error" class="field-error-msg hidden">Please select your driver distance.</p>
+                            </div>
+
+                            <div class="field">
+                                <label for="iron-distance" class="field-label">7-Iron Distance</label>
+                                <div class="select-wrapper">
+                                    <select id="iron-distance">
+                                        <option value="">Select distance...</option>
+                                        <option value="<130">Under 120 m</option>
+                                        <option value="130-150">120 – 135 m</option>
+                                        <option value="150-170">135 – 155 m</option>
+                                        <option value="170+">155+ m</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="typical-miss" class="field-label">Typical Miss</label>
+                                <div class="select-wrapper">
+                                    <select id="typical-miss">
+                                        <option value="">Select miss...</option>
+                                        <option value="straight">Mostly Straight</option>
+                                        <option value="slight_curve">Slight Fade / Draw</option>
+                                        <option value="big_curve">Big Slice / Hook</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- Priorities -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            Ball Priorities
+                        </div>
+
+                        <div class="field-group">
+                            <div class="field">
+                                <label for="priority-1" class="field-label priority-label priority-1">
+                                    <span class="priority-num">1</span>
+                                    Top Priority <span class="field-required">*</span>
+                                </label>
+                                <div class="select-wrapper select-priority">
+                                    <select id="priority-1">
+                                        <option value="">Select top priority...</option>
+                                        <option value="distance">Maximum Distance</option>
+                                        <option value="spin">Greenside Spin &amp; Control</option>
+                                        <option value="spin_low">Lower Spin / Less Curve</option>
+                                        <option value="feel">Soft Feel</option>
+                                        <option value="feel_firm">Firm Feel / Crisp Feedback</option>
+                                        <option value="forgiveness">Forgiveness / Straight Flight</option>
+                                        <option value="workability">Shot Shaping / Workability</option>
+                                        <option value="flight_low">Penetrating / Low Flight</option>
+                                        <option value="flight_high">High Trajectory / Max Carry</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                                <p id="priority-error" class="field-error-msg hidden">Please select your top priority.</p>
+                            </div>
+
+                            <div class="field">
+                                <label for="priority-2" class="field-label priority-label priority-2">
+                                    <span class="priority-num">2</span>
+                                    Second Priority
+                                </label>
+                                <div class="select-wrapper">
+                                    <select id="priority-2">
+                                        <option value="">Optional...</option>
+                                        <option value="distance">Maximum Distance</option>
+                                        <option value="spin">Greenside Spin &amp; Control</option>
+                                        <option value="spin_low">Lower Spin / Less Curve</option>
+                                        <option value="feel">Soft Feel</option>
+                                        <option value="feel_firm">Firm Feel / Crisp Feedback</option>
+                                        <option value="forgiveness">Forgiveness / Straight Flight</option>
+                                        <option value="workability">Shot Shaping / Workability</option>
+                                        <option value="flight_low">Penetrating / Low Flight</option>
+                                        <option value="flight_high">High Trajectory / Max Carry</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="priority-3" class="field-label priority-label priority-3">
+                                    <span class="priority-num">3</span>
+                                    Third Priority
+                                </label>
+                                <div class="select-wrapper">
+                                    <select id="priority-3">
+                                        <option value="">Optional...</option>
+                                        <option value="distance">Maximum Distance</option>
+                                        <option value="spin">Greenside Spin &amp; Control</option>
+                                        <option value="spin_low">Lower Spin / Less Curve</option>
+                                        <option value="feel">Soft Feel</option>
+                                        <option value="feel_firm">Firm Feel / Crisp Feedback</option>
+                                        <option value="forgiveness">Forgiveness / Straight Flight</option>
+                                        <option value="workability">Shot Shaping / Workability</option>
+                                        <option value="flight_low">Penetrating / Low Flight</option>
+                                        <option value="flight_high">High Trajectory / Max Carry</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- Preferences -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+                            </div>
+                            Preferences
+                        </div>
+
+                        <div class="field-group">
+                            <div class="field">
+                                <label for="budget" class="field-label">Budget</label>
+                                <div class="select-wrapper">
+                                    <select id="budget">
+                                        <option value="">Any price...</option>
+                                        <option value="value">Value (~$20/dz)</option>
+                                        <option value="mid">Mid-Range (~$30/dz)</option>
+                                        <option value="premium">Premium (~$45/dz)</option>
+                                        <option value="tour">Tour (~$55+/dz)</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="cover-pref" class="field-label">Cover Material</label>
+                                <div class="select-wrapper">
+                                    <select id="cover-pref">
+                                        <option value="">No preference...</option>
+                                        <option value="urethane">Urethane (tour spin &amp; feel)</option>
+                                        <option value="ionomer">Ionomer (durable &amp; value)</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <button type="button" id="find-balls-btn" class="cta-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    Find My Perfect Match
+                </button>
+
+            </div>
+        </aside>
+
+        <!-- Results -->
+        <section class="results-area">
+
+            <div class="results-header">
+                <div>
+                    <h2 class="results-title">Recommended For You</h2>
+                    <span id="result-count" class="results-count"></span>
+                </div>
+                <div id="view-toggle" class="view-toggle hidden">
+                    <button id="btn-cards" class="view-btn active">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                        Cards
+                    </button>
+                    <button id="btn-compare" class="view-btn">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                        Compare
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card grid -->
+            <div id="results-grid" class="results-grid view-section">
+                <div id="empty-state" class="empty-state col-span-full">
+                    <div class="empty-icon">
+                        <svg viewBox="0 0 80 80" width="72" height="72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="34" fill="url(#emptyGrad)"/>
+                            <g fill="rgba(255,255,255,0.22)">
+                                <circle cx="26" cy="26" r="2.4"/><circle cx="40" cy="22" r="2.4"/><circle cx="54" cy="26" r="2.4"/>
+                                <circle cx="20" cy="40" r="2.4"/><circle cx="60" cy="40" r="2.4"/>
+                                <circle cx="26" cy="54" r="2.4"/><circle cx="40" cy="58" r="2.4"/><circle cx="54" cy="54" r="2.4"/>
+                            </g>
+                            <ellipse cx="40" cy="40" rx="34" ry="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.4"/>
+                            <defs>
+                                <radialGradient id="emptyGrad" cx="35%" cy="30%" r="70%">
+                                    <stop offset="0%" stop-color="#1A4731"/>
+                                    <stop offset="100%" stop-color="#081810"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="empty-title">Ready to find your match?</h3>
+                    <p class="empty-sub">Select your driver distance and top priority to see personalised recommendations from 93 golf balls.</p>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div id="loading-state" class="state-panel hidden">
+                <div class="loading-spinner"></div>
+                <p class="state-text">Loading ball database…</p>
+            </div>
+
+            <!-- Error -->
+            <div id="error-state" class="state-panel state-error hidden">
+                <p class="state-title">Could not load the ball database.</p>
+                <p class="state-text">Make sure database.json is in the same folder and reload the page.</p>
+            </div>
+
+            <!-- Compare Table -->
+            <div id="compare-view" class="compare-wrap view-section hidden">
+                <table class="compare-table">
+                    <thead id="compare-thead"></thead>
+                    <tbody id="compare-tbody"></tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-legend">
+                <span><strong>Compression:</strong> Lower = softer feel; higher = firmer, more energy at speed.</span>
+                <span><strong>Driver Spin:</strong> Lower = distance &amp; forgiveness; higher = workability.</span>
+                <span><strong>GS Spin:</strong> Higher = more greenside stopping power.</span>
+                <span><strong>Urethane:</strong> Tour-grade spin &amp; feel. <strong>Ionomer:</strong> Durable, consistent, better value.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

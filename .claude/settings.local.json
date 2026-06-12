@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:shop.bridgestonegolf.com)",
+      "WebSearch",
+      "WebFetch(domain:www.golfgalaxy.com)",
+      "WebFetch(domain:www.dickssportinggoods.com)",
+      "WebFetch(domain:www.srixon.com)",
+      "Bash(open http://localhost:8743/Users/ry/Documents/Project/Golf/index.html)",
+      "Bash(kill 19611)",
+      "Bash(python3 -m http.server 8744)",
+      "Bash(open http://localhost:8744)",
+      "Bash(python3 -m http.server 8745)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(open \"http://localhost:8745\")"
+    ]
+  }
+}
