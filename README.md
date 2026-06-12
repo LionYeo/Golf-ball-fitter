@@ -1,5 +1,9 @@
 # FitMyBall — Data-Driven Golf Ball Fitting
 
+My purpose for this:
+
+Current online golf ball fitters are inherently biased. When you use a specific manufacturer's tool, you are locked into a closed ecosystem; they will only recommend balls from their own lineup. This forces golfers to visit multiple sites, compare completely different metrics, and manually piece together their options, leaving them blind to better-fitting alternatives from competing brands. I got tired of having to go through all the websites, so I consolidate all into one.
+
 FitMyBall is a premium, interactive web application that recommends the perfect golf ball for a player based on their unique swing characteristics, skill level, and personal preferences. 
 
 Unlike basic static charts, this tool acts as a "virtual fitter" using a weighted scoring algorithm to rank 93 balls across 20 top brands, visualizing the results with custom trajectory paths and spec spectrums.
