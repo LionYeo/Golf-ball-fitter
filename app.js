@@ -150,6 +150,7 @@
     async function loadDatabase() {
         try {
             const res = await fetch('database.json');
+            if (!res.ok) return false;
             golfBalls = await res.json();
             return true;
         } catch {
@@ -358,9 +359,17 @@
 
             // 6 — Budget
             if (budgetVal) {
-                const diff = Math.abs((BUDGET_TIERS[ball.price_tier] ?? 0) - (BUDGET_TIERS[budgetVal] ?? 0));
-                if (diff === 0) { score += 8; }
-                else { score -= diff * 10; }
+                const ballTier = BUDGET_TIERS[ball.price_tier] ?? 0;
+                const budgetTier = BUDGET_TIERS[budgetVal] ?? 0;
+                const diff = ballTier - budgetTier;
+                
+                if (diff === 0) {
+                    score += 8;
+                } else if (diff > 0) {
+                    score -= diff * 15; // Heavy penalty if ball is more expensive
+                } else {
+                    score -= Math.abs(diff) * 2; // Light penalty if ball is cheaper
+                }
             }
 
             // Always-visible "why" bullets
